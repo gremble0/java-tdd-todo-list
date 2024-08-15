@@ -3,7 +3,7 @@ package com.booleanuk.core;
 public class Task {
   private static int taskCounter = 0;
 
-  private int ID;
+  public int ID;
   public boolean completed;
   public String description;
 
