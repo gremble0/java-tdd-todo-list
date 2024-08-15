@@ -27,6 +27,14 @@ public class TodoList {
     return this.tasks.stream().sorted((first, second) -> second.description.compareTo(first.description)).toList();
   }
 
+  public List<Task> getCompletedTasks() {
+    return this.tasks.stream().filter((task) -> task.completed).toList();
+  }
+
+  public List<Task> getUncompletedTasks() {
+    return this.tasks.stream().filter((task) -> !task.completed).toList();
+  }
+
   public void remove(String taskDescription) throws NonExistentTaskException {
     int i = 0;
     for (Task task : this.tasks)
