@@ -144,7 +144,7 @@ class TodoListTest {
         List<Task> tasks = todoList.getTasksAlphabeticallyDescending();
         // "Walk dog" is alphabetically before "Water plants" so waterPlants should be
         // first in descending order
-        Assertions.assertEquals(tasks.getLast(), waterPlants);
-        Assertions.assertEquals(tasks.getFirst(), walkDog);
+        Assertions.assertEquals(tasks.getFirst(), waterPlants);
+        Assertions.assertEquals(tasks.getLast(), walkDog);
     }
 }

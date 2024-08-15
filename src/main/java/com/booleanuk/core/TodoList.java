@@ -19,6 +19,14 @@ public class TodoList {
     return this.tasks;
   }
 
+  public List<Task> getTasksAlphabeticallyAscending() {
+    return this.tasks.stream().sorted((first, second) -> first.description.compareTo(second.description)).toList();
+  }
+
+  public List<Task> getTasksAlphabeticallyDescending() {
+    return this.tasks.stream().sorted((first, second) -> second.description.compareTo(first.description)).toList();
+  }
+
   public void remove(String taskDescription) throws NonExistentTaskException {
     int i = 0;
     for (Task task : this.tasks)
