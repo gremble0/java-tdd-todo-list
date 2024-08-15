@@ -14,7 +14,7 @@ class TodoListExtendedTest {
   public void testTodoListExtendedSearch() {
     TodoListExtended todoList = new TodoListExtended();
 
-    Task walkDog = new Task("Walk dog");
+    TaskExtended walkDog = new TaskExtended("Walk dog", LocalDateTime.now());
     todoList.add(walkDog);
 
     try {
@@ -34,7 +34,7 @@ class TodoListExtendedTest {
   public void testTodoListExtendedSetDescription() {
     TodoListExtended todoList = new TodoListExtended();
 
-    Task walkDog = new Task("Walk dog");
+    TaskExtended walkDog = new TaskExtended("Walk dog", LocalDateTime.now());
     todoList.add(walkDog);
     Assertions.assertEquals(todoList.search(walkDog.ID).description, "Walk dog");
     todoList.setTaskDescription(walkDog.ID, "Water plants");
@@ -45,7 +45,7 @@ class TodoListExtendedTest {
   public void testTodoListExtendedToggleCompletion() {
     TodoListExtended todoList = new TodoListExtended();
 
-    Task walkDog = new Task("Walk dog");
+    TaskExtended walkDog = new TaskExtended("Walk dog", LocalDateTime.now());
     todoList.add(walkDog);
     Assertions.assertFalse(todoList.search(walkDog.ID).completed);
     todoList.toggleCompletion(walkDog.ID);
@@ -64,7 +64,7 @@ class TodoListExtendedTest {
     todoList.add(waterPlants);
 
     List<LocalDateTime> tasksAdded = todoList.getAddedDates();
-    Assertions.assertEquals(tasksAdded.getFirst().dateAdded, walkDog.dateAdded);
-    Assertions.assertEquals(tasksAdded.getLast().dateAdded, waterPlants.dateAdded);
+    Assertions.assertEquals(tasksAdded.getFirst(), walkDog.dateAdded);
+    Assertions.assertEquals(tasksAdded.getLast(), waterPlants.dateAdded);
   }
 }

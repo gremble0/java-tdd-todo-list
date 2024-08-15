@@ -1,12 +1,21 @@
 package com.booleanuk.extension;
 
-import com.booleanuk.core.NonExistentTaskException;
-import com.booleanuk.core.Task;
-import com.booleanuk.core.TodoList;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-public class TodoListExtended extends TodoList {
-  public Task search(int ID) throws NonExistentTaskException {
-    for (Task task : this.tasks)
+import com.booleanuk.core.NonExistentTaskException;
+
+public class TodoListExtended {
+  protected List<TaskExtended> tasks = new ArrayList<>();
+
+  public void add(TaskExtended task) {
+    if (!this.tasks.contains(task))
+      this.tasks.add(task);
+  }
+
+  public TaskExtended search(int ID) throws NonExistentTaskException {
+    for (TaskExtended task : this.tasks)
       if (task.ID == ID)
         return task;
 
@@ -15,7 +24,7 @@ public class TodoListExtended extends TodoList {
   }
 
   public void setTaskDescription(int ID, String description) throws NonExistentTaskException {
-    for (Task task : this.tasks)
+    for (TaskExtended task : this.tasks)
       if (task.ID == ID) {
         task.description = description;
         return;
@@ -25,12 +34,21 @@ public class TodoListExtended extends TodoList {
   }
 
   public void toggleCompletion(int ID) throws NonExistentTaskException {
-    for (Task task : this.tasks)
+    for (TaskExtended task : this.tasks)
       if (task.ID == ID) {
         task.completed = !task.completed;
         return;
       }
 
     throw new NonExistentTaskException(ID);
+  }
+
+  public List<LocalDateTime> getAddedDates() {
+    List<LocalDateTime> addedDates = new ArrayList<>();
+
+    for (TaskExtended task : this.tasks)
+      addedDates.add(task.dateAdded);
+
+    return addedDates;
   }
 }
