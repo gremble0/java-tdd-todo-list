@@ -15,7 +15,7 @@ class TodoListExtendedTest {
     todoList.add(walkDog);
 
     try {
-      Assertions.assertEquals(walkDog, todoList.search(0));
+      Assertions.assertEquals(walkDog, todoList.search(walkDog.ID));
     } catch (NonExistentTaskException e) {
       Assertions.fail("Should be unreachable");
     }
@@ -25,5 +25,15 @@ class TodoListExtendedTest {
       Assertions.fail("Should be unreachable");
     } catch (NonExistentTaskException e) {
     }
+  }
+
+  @Test
+  public void testTodoListExtendedSetDescription() {
+    TodoListExtended todoList = new TodoListExtended();
+
+    Task walkDog = new Task("Walk dog");
+    todoList.add(walkDog);
+    todoList.setTaskDescription(walkDog.ID, "Water plants");
+    Assertions.assertEquals(todoList.search(walkDog.ID).description, "Water plants");
   }
 }
