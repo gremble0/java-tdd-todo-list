@@ -17,15 +17,12 @@ class TodoListExtendedTest {
     try {
       Assertions.assertEquals(walkDog, todoList.search(0));
     } catch (NonExistentTaskException e) {
-      // Should be unreachable task with id 0 exists
-      Assertions.assertTrue(false);
+      Assertions.fail("Should be unreachable");
     }
 
     try {
       todoList.search(9);
-      // Should be unreachable task with id 9 does not exist and should throw
-      // exception
-      Assertions.assertTrue(false);
+      Assertions.fail("Should be unreachable");
     } catch (NonExistentTaskException e) {
     }
   }

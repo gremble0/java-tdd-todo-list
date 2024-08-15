@@ -31,8 +31,7 @@ class TodoListTest {
             todoList.remove("Water plants");
             Assertions.assertEquals(todoList.size(), 1);
         } catch (NonExistentTaskException e) {
-            // Should be unreachable
-            Assertions.assertTrue(false);
+            Assertions.fail("Should be unreachable");
         }
     }
 
@@ -46,8 +45,7 @@ class TodoListTest {
         try {
             todoList.remove("Walk the dog");
 
-            // Should be unreachable
-            Assertions.assertTrue(false);
+            Assertions.fail("Should be unreachable");
         } catch (NonExistentTaskException e) {
             // Size should still be the same
             Assertions.assertEquals(todoList.size(), 2);
@@ -62,14 +60,12 @@ class TodoListTest {
         try {
             todoList.search("Water plants");
         } catch (NonExistentTaskException e) {
-            // Should be unreacable - water plants exists in todoList
-            Assertions.assertTrue(false);
+            Assertions.fail("Should be unreachable");
         }
 
         try {
             todoList.search("Walk dog");
-            // Should be unreachable - no task "Walk dog" in todoList
-            Assertions.assertTrue(false);
+            Assertions.fail("Should be unreachable");
         } catch (NonExistentTaskException e) {
         }
     }
@@ -82,8 +78,7 @@ class TodoListTest {
         try {
             Assertions.assertFalse(todoList.search("Water plants").completed);
         } catch (NonExistentTaskException e) {
-            // Should be unreacable
-            Assertions.assertTrue(false);
+            Assertions.fail("Should be unreachable");
         }
 
         todoList.toggleCompletion("Water plants");
@@ -91,8 +86,7 @@ class TodoListTest {
         try {
             Assertions.assertTrue(todoList.search("Water plants").completed);
         } catch (NonExistentTaskException e) {
-            // Should be unreacable
-            Assertions.assertTrue(false);
+            Assertions.fail("Should be unreachable");
         }
 
         todoList.toggleCompletion("Water plants");
@@ -100,8 +94,7 @@ class TodoListTest {
         try {
             Assertions.assertFalse(todoList.search("Water plants").completed);
         } catch (NonExistentTaskException e) {
-            // Should be unreacable
-            Assertions.assertTrue(false);
+            Assertions.fail("Should be unreachable");
         }
     }
 
