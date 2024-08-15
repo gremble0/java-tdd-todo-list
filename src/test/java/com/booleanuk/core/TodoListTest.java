@@ -117,4 +117,34 @@ class TodoListTest {
         Assertions.assertEquals(tasks.getFirst(), waterPlants);
         Assertions.assertEquals(tasks.getLast(), walkDog);
     }
+
+    @Test
+    public void testTodoListGetTasksAlphabeticallyAscending() {
+        TodoList todoList = new TodoList();
+        Task walkDog = new Task("Walk dog");
+        Task waterPlants = new Task("Water plants");
+        todoList.add(walkDog);
+        todoList.add(waterPlants);
+
+        List<Task> tasks = todoList.getTasksAlphabeticallyAscending();
+        // "Walk dog" is alphabetically before "Water plants" so walkDog should be first
+        // in ascending order
+        Assertions.assertEquals(tasks.getFirst(), walkDog);
+        Assertions.assertEquals(tasks.getLast(), waterPlants);
+    }
+
+    @Test
+    public void testTodoListGetTasksAlphabeticallyDescending() {
+        TodoList todoList = new TodoList();
+        Task walkDog = new Task("Walk dog");
+        Task waterPlants = new Task("Water plants");
+        todoList.add(walkDog);
+        todoList.add(waterPlants);
+
+        List<Task> tasks = todoList.getTasksAlphabeticallyDescending();
+        // "Walk dog" is alphabetically before "Water plants" so waterPlants should be
+        // first in descending order
+        Assertions.assertEquals(tasks.getLast(), waterPlants);
+        Assertions.assertEquals(tasks.getFirst(), walkDog);
+    }
 }
