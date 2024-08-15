@@ -66,9 +66,9 @@ class TodoListTest {
 
         try {
             todoList.search("Walk dog");
-        } catch (NonExistentTaskException e) {
-            // Exception should be caught here, no task "Walk dog" in todoList
+            // Should be unreachable - no task "Walk dog" in todoList
             Assertions.assertTrue(false);
+        } catch (NonExistentTaskException e) {
         }
     }
 
