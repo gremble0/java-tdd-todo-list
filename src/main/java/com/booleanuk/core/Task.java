@@ -4,7 +4,7 @@ public class Task {
   private static int taskCounter = 0;
 
   private int ID;
-  private boolean completed;
+  public boolean completed;
   public String description;
 
   public Task(String description, boolean completed) {

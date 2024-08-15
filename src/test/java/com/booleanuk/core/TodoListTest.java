@@ -54,4 +54,35 @@ class TodoListTest {
             Assertions.assertTrue(true);
         }
     }
+
+    @Test
+    public void testTodoListToggleCompletion() {
+        TodoList todoList = new TodoList();
+        todoList.add(new Task("Water plants"));
+
+        try {
+            Assertions.assertFalse(todoList.search("Water plants").completed);
+        } catch (NonExistentTaskException e) {
+            // Should be unreacable
+            Assertions.assertTrue(false);
+        }
+
+        todoList.toggleCompletion("Water plants");
+
+        try {
+            Assertions.assertTrue(todoList.search("Water plants").completed);
+        } catch (NonExistentTaskException e) {
+            // Should be unreacable
+            Assertions.assertTrue(false);
+        }
+
+        todoList.toggleCompletion("Water plants");
+
+        try {
+            Assertions.assertFalse(todoList.search("Water plants").completed);
+        } catch (NonExistentTaskException e) {
+            // Should be unreacable
+            Assertions.assertTrue(false);
+        }
+    }
 }
