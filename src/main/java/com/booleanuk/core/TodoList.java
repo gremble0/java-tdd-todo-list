@@ -15,6 +15,10 @@ public class TodoList {
       this.tasks.add(task);
   }
 
+  public List<Task> getTasks() {
+    return this.tasks;
+  }
+
   public void remove(String taskDescription) throws NonExistentTaskException {
     int i = 0;
     for (Task task : this.tasks)
