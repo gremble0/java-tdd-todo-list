@@ -33,7 +33,21 @@ class TodoListExtendedTest {
 
     Task walkDog = new Task("Walk dog");
     todoList.add(walkDog);
+    Assertions.assertEquals(todoList.search(walkDog.ID).description, "Walk dog");
     todoList.setTaskDescription(walkDog.ID, "Water plants");
     Assertions.assertEquals(todoList.search(walkDog.ID).description, "Water plants");
+  }
+
+  @Test
+  public void testTodoListExtendedToggleCompletion() {
+    TodoListExtended todoList = new TodoListExtended();
+
+    Task walkDog = new Task("Walk dog");
+    todoList.add(walkDog);
+    Assertions.assertFalse(todoList.search(walkDog.ID).completed);
+    todoList.toggleCompletion(walkDog.ID);
+    Assertions.assertTrue(todoList.search(walkDog.ID).completed);
+    todoList.toggleCompletion(walkDog.ID);
+    Assertions.assertFalse(todoList.search(walkDog.ID).completed);
   }
 }
