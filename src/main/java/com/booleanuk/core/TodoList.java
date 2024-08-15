@@ -26,4 +26,15 @@ public class TodoList {
     // Will only be reached if task with taskDescription does not exist
     throw new NonExistentTaskException(taskDescription);
   }
+
+  public void toggleCompletion(String taskDescription) throws NonExistentTaskException {
+    for (Task task : this.tasks)
+      if (task.description.equals(taskDescription)) {
+        task.completed = !task.completed;
+        return;
+      }
+
+    // Will only be reached if task with taskDescription does not exist
+    throw new NonExistentTaskException(taskDescription);
+  }
 }
