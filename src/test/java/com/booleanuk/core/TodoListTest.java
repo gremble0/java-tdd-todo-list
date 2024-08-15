@@ -147,4 +147,32 @@ class TodoListTest {
         Assertions.assertEquals(tasks.getFirst(), waterPlants);
         Assertions.assertEquals(tasks.getLast(), walkDog);
     }
+
+    @Test
+    public void testTodoListGetCompletedTasks() {
+        TodoList todoList = new TodoList();
+        Task waterPlants = new Task("Water plants");
+        todoList.add(waterPlants);
+        todoList.add(new Task("Walk dog"));
+
+        todoList.toggleCompletion("Water plants");
+
+        List<Task> completedTasks = todoList.getCompletedTasks();
+        Assertions.assertEquals(1, completedTasks.size());
+        Assertions.assertEquals(waterPlants, completedTasks.getFirst());
+    }
+
+    @Test
+    public void testTodoListGetUncompletedTasks() {
+        TodoList todoList = new TodoList();
+        todoList.add(new Task("Water plants"));
+        Task walkDog = new Task("Walk dog");
+        todoList.add(walkDog);
+
+        todoList.toggleCompletion("Water plants");
+
+        List<Task> uncompletedTasks = todoList.getUncompletedTasks();
+        Assertions.assertEquals(1, uncompletedTasks.size());
+        Assertions.assertEquals(walkDog, uncompletedTasks.getFirst());
+    }
 }
