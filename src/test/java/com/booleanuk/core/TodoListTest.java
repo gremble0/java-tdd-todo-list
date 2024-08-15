@@ -1,5 +1,7 @@
 package com.booleanuk.core;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -101,5 +103,18 @@ class TodoListTest {
             // Should be unreacable
             Assertions.assertTrue(false);
         }
+    }
+
+    @Test
+    public void testTodoListGetTasks() {
+        TodoList todoList = new TodoList();
+        Task waterPlants = new Task("Water plants");
+        Task walkDog = new Task("Walk dog");
+        todoList.add(waterPlants);
+        todoList.add(walkDog);
+
+        List<Task> tasks = todoList.getTasks();
+        Assertions.assertEquals(tasks.getFirst(), waterPlants);
+        Assertions.assertEquals(tasks.getLast(), walkDog);
     }
 }
