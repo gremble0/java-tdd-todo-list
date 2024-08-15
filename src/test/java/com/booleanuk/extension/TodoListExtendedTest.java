@@ -1,5 +1,8 @@
 package com.booleanuk.extension;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -49,5 +52,19 @@ class TodoListExtendedTest {
     Assertions.assertTrue(todoList.search(walkDog.ID).completed);
     todoList.toggleCompletion(walkDog.ID);
     Assertions.assertFalse(todoList.search(walkDog.ID).completed);
+  }
+
+  @Test
+  public void testTodoListExtendedGetAddedDates() {
+    TodoListExtended todoList = new TodoListExtended();
+    TaskExtended walkDog = new TaskExtended("Walk dog", LocalDateTime.now());
+    TaskExtended waterPlants = new TaskExtended("Water plants", LocalDateTime.now());
+
+    todoList.add(walkDog);
+    todoList.add(waterPlants);
+
+    List<LocalDateTime> tasksAdded = todoList.getAddedDates();
+    Assertions.assertEquals(tasksAdded.getFirst().dateAdded, walkDog.dateAdded);
+    Assertions.assertEquals(tasksAdded.getLast().dateAdded, waterPlants.dateAdded);
   }
 }
