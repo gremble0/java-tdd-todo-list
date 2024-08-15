@@ -17,6 +17,9 @@ public class Task {
     this(description, false);
   }
 
+  /**
+   * This method is used to compare each task in the TodoList
+   */
   @Override
   public boolean equals(Object other) {
     if (!(other instanceof Task))

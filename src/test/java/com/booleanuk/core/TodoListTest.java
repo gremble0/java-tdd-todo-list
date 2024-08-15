@@ -17,4 +17,40 @@ class TodoListTest {
         todoList.add(new Task("Grocery shopping"));
         Assertions.assertEquals(todoList.size(), 2);
     }
+
+    @Test
+    public void testTodoListRemove() {
+        TodoList todoList = new TodoList();
+        todoList.add(new Task("Water plants"));
+        todoList.add(new Task("Grocery shopping"));
+        Assertions.assertEquals(todoList.size(), 2);
+
+        try {
+            todoList.remove("Water plants");
+            Assertions.assertEquals(todoList.size(), 1);
+
+            Assertions.assertTrue(true);
+        } catch (NonExistentTaskException e) {
+            // Should be unreachable
+            Assertions.assertTrue(false);
+        }
+    }
+
+    @Test
+    public void testTodoListRemoveNonExistent() {
+        TodoList todoList = new TodoList();
+        todoList.add(new Task("Water plants"));
+        todoList.add(new Task("Grocery shopping"));
+        Assertions.assertEquals(todoList.size(), 2);
+
+        try {
+            todoList.remove("Water plants");
+            Assertions.assertEquals(todoList.size(), 1);
+
+            // Should be unreachable
+            Assertions.assertTrue(false);
+        } catch (NonExistentTaskException e) {
+            Assertions.assertTrue(true);
+        }
+    }
 }
