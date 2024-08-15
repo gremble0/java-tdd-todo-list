@@ -28,8 +28,6 @@ class TodoListTest {
         try {
             todoList.remove("Water plants");
             Assertions.assertEquals(todoList.size(), 1);
-
-            Assertions.assertTrue(true);
         } catch (NonExistentTaskException e) {
             // Should be unreachable
             Assertions.assertTrue(false);
@@ -51,7 +49,26 @@ class TodoListTest {
         } catch (NonExistentTaskException e) {
             // Size should still be the same
             Assertions.assertEquals(todoList.size(), 2);
-            Assertions.assertTrue(true);
+        }
+    }
+
+    @Test
+    public void testTodoListSearch() {
+        TodoList todoList = new TodoList();
+        todoList.add(new Task("Water plants"));
+
+        try {
+            todoList.search("Water plants");
+        } catch (NonExistentTaskException e) {
+            // Should be unreacable - water plants exists in todoList
+            Assertions.assertTrue(false);
+        }
+
+        try {
+            todoList.search("Walk dog");
+        } catch (NonExistentTaskException e) {
+            // Exception should be caught here, no task "Walk dog" in todoList
+            Assertions.assertTrue(false);
         }
     }
 
