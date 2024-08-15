@@ -44,12 +44,13 @@ class TodoListTest {
         Assertions.assertEquals(todoList.size(), 2);
 
         try {
-            todoList.remove("Water plants");
-            Assertions.assertEquals(todoList.size(), 1);
+            todoList.remove("Walk the dog");
 
             // Should be unreachable
             Assertions.assertTrue(false);
         } catch (NonExistentTaskException e) {
+            // Size should still be the same
+            Assertions.assertEquals(todoList.size(), 2);
             Assertions.assertTrue(true);
         }
     }

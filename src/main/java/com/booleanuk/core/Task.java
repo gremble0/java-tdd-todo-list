@@ -4,8 +4,8 @@ public class Task {
   private static int taskCounter = 0;
 
   private int ID;
-  private String description;
   private boolean completed;
+  public String description;
 
   public Task(String description, boolean completed) {
     this.ID = taskCounter++;
