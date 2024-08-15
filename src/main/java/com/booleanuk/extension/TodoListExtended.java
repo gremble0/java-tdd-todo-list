@@ -21,7 +21,16 @@ public class TodoListExtended extends TodoList {
         return;
       }
 
-    // Will only be reached if task with taskDescription does not exist
+    throw new NonExistentTaskException(ID);
+  }
+
+  public void toggleCompletion(int ID) throws NonExistentTaskException {
+    for (Task task : this.tasks)
+      if (task.ID == ID) {
+        task.completed = !task.completed;
+        return;
+      }
+
     throw new NonExistentTaskException(ID);
   }
 }
